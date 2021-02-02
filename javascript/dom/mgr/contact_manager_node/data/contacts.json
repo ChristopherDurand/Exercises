@@ -1,0 +1,23 @@
+[
+  {
+    "full_name": "Bobs",
+    "phone_number": "456456456",
+    "email": "532@wdwd",
+    "tags": "Treenis",
+    "id": 5
+  },
+  {
+    "full_name": "Mom Durand",
+    "phone_number": "12412412",
+    "email": "bubba@mom.net",
+    "tags": "mom, cooking",
+    "id": 6
+  },
+  {
+    "full_name": "Rob",
+    "phone_number": "3423423",
+    "email": "rob@outback",
+    "tags": "cooking, drinking",
+    "id": 7
+  }
+]

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Exercise 1</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+
+      document.addEventListener('DOMContentLoaded', () => {
+        let button = document.querySelector('#btn');
+        let scheduleContainer = document.getElementById('schedules');
+
+        function parseStaffSchedules(data) {
+          let schedules = {};
+          data.forEach(({staff_id, student_email}) => {
+            let staffKey = `staff ${staff_id}`
+            if (!student_email) {
+              if (schedules[staffKey]) {
+                schedules[staffKey] += 1;
+              } else {
+                schedules[staffKey] = 1;
+              }
+            }
+          });
+          return schedules;
+        }
+
+        function draw(scheduleData) {
+          let noneDrawn = true;
+          scheduleContainer.innerHTML = ''; 
+
+          for (staffId in scheduleData) {
+            noneDrawn = false;
+            scheduleContainer.innerHTML += `<p>${staffId} : ${scheduleData[staffId]}</p>`;
+          }
+          if (noneDrawn) {
+            scheduleContainer.innerHTML += '<p>No schedules are available.</p>';
+          }
+
+        }
+
+        button.addEventListener('click', event => {
+          let request = new XMLHttpRequest();
+          button.textContent = 'Loading...';
+          request.open('GET', 'http://localhost:3000/api/schedules');
+          request.responseType = 'json';
+          request.timeout = 5000;
+
+          request.addEventListener('load', event => {
+            let data = request.response;
+            console.log(data);
+            let schedules = parseStaffSchedules(data);
+            draw(schedules);
+          });
+
+          request.addEventListener('timeout', event => {
+            scheduleContainer.innerHTML = "<p>Timeout occurred! Try again!</p>";
+          });
+
+          request.addEventListener('loadend', event => {
+            button.textContent = 'Get Schedules';
+            scheduleContainer.innerHTML += '<p>Request Finished.</p>'
+          })
+
+          request.send();
+        });
+      });
+
+    </script>
+  </head>
+  <body>
+    <button id="btn">Get Schedules</button>
+    <div id="schedules"></div>
+  </body>
+</html>

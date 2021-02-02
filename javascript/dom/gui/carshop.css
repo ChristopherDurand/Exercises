@@ -1,0 +1,56 @@
+header {
+  background-color: #889988;
+}
+
+h1 {
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+ul#filters {
+  display: flex;
+}
+
+#filters li {
+  display: inline-block;
+  margin: 1rem;
+}
+
+#filters select {
+  margin-left: 0.25rem;
+  padding: 0.25rem;
+}
+
+#filters button {
+  padding: 0.5rem;
+}
+
+img {
+  display: inline-block;
+  width: 100%;
+}
+
+#cars {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  padding: 1rem;
+  align-content: space-between;
+}
+
+#cars .listing {
+  margin-top: auto;
+}
+
+.listing h2 {
+  font-size: 1.5rem;
+}
+
+.listing a {
+  display: inline-block;
+  background: #889988;
+  text-decoration: none;
+  color: #ddeedd;
+  padding: 0.45rem 0.65rem;
+  border-radius: 0.45rem;
+}

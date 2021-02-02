@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Car Shop</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="carshop.css">
+    <script type="text/javascript" src='jquery.js'></script>
+    <script type="text/javascript" src='handlebars.js'></script>
+    <script type="text/javascript" src='carshop.js'></script>
+    <script id='options' type="text/x-handlebars">
+      <option>{{base}}</option>
+      {{#each values}}
+      <option value='{{this}}'>{{this}}</option>
+      {{/each}}
+    </script>
+    <script id='car_listings' type="text/x-handlebars">
+      {{#each cars}}
+        <li class='listing'>
+          <img src="{{image}}">
+          <h2>{{make}} {{model}}</h2>
+          <p>Year: {{year}}</p>
+          <p>Price: ${{price}}</p>
+          <a href="#">Buy</a>
+        </li>
+      {{/each}}
+    </script>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <header>
+      <h1>Buy Used Cars</h1>
+      <ul id=filters>
+        <li>Make<select id='make'></select></li>
+        <li>Model<select id='model'></select></li>
+        <li>Price<select id='price'></select></li>
+        <li>Year<select id='year'></select></li>
+        <li><button>Filter</button></li>
+      </ul>
+    </header>
+    <main>
+      <ul id='cars'></ul>
+    </main>
+  </body>
+</html>

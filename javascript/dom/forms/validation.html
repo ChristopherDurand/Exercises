@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="validation.css">
+    <script type="text/javascript" src='jquery.js'></script>
+    <script type="text/javascript" src='handlebars.js'></script>
+    <script type="text/javascript" src='validation.js'></script>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <main>
+      <h1>Sign Up Form</h1>
+      <form novalidate action="#" method="POST">
+        <p class='.form_errors'></p>
+        <dl>
+          <dt><label for='first_name'>First Name</label></dt>
+          <dd>
+            <input type="text" name="first_name" id="first_name" required>
+            <span class='error_message'></span>
+          </dd>
+          <dt><label for='last_name'>Last Name</label></dt>
+          <dd>
+            <input required type="text" id="last_name" name="last_name">
+            <span class='error_message'></span>
+          </dd>
+          <dt><label for='email'>Email</label></dt>
+          <dd>
+            <input required type="email" id="email" pattern=".+@.+" placeholder='name@example.com' name="first_name">
+            <span class='error_message'></span>
+          </dd>
+          <dt><label for='password'>Password</label></dt>
+          <dd>
+            <input required type="password" id="password" pattern=".{10,}" name="first_name">
+            <span class='error_message'></span>
+          </dd>
+          <dt><label for='phone'>Phone Number</label></dt>
+          <dd>
+            <input required type="text" id="phone" name="phone" pattern='\d\d\d-\d\d\d-\d\d\d\d' placeholder='111-222-3333'>
+            <span class='error_message'></span>
+          </dd>
+        </dl>
+        <button type='submit'>Sign Up</button>
+      </form>
+    </main>
+  </body>
+</html>

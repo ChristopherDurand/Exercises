@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bookings</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+
+      document.addEventListener('DOMContentLoaded', () => {
+        let bookingsList = document.getElementById('bookings');
+        let getBookings = new XMLHttpRequest();
+        getBookings.open('GET', '/api/schedules');
+        getBookings.responseType = 'json';
+        getBookings.send();
+
+        function buildListOfSchedules(schedules) {
+          // turn schedules into an object with the dates as keys
+          // each value is an array of bookings
+          const schedulesForDates = {};
+          schedules.forEach(({name, date, email, time}) => {
+            let booking = `${name} | ${email} | ${time}`
+            if (!schedulesForDates.hasOwnProperty(date)) {
+              schedulesForDates[date] = [booking];
+            } else {
+              schedulesForDates[date].push(booking);
+            }
+          });
+          
+          for (const date in schedulesForDates) {
+            let bookings = schedulesForDates[date];
+            let li = document.createElement('li');
+            li.textContent = date;
+            bookingsList.appendChild(li);
+            const ul = document.createElement('ul');
+            ul.style.display = 'none'
+            li.appendChild(ul);
+            bookings.forEach(booking => {
+              const bookingLi = document.createElement('li');
+              bookingLi.textContent = booking;
+              ul.appendChild(bookingLi);
+            });
+            li.addEventListener('click', showList(ul));
+          }
+        }
+
+        function showList(element) {
+          return event => {
+            element.style.display = 'block';
+          };
+        }
+
+        getBookings.addEventListener('load', event => {
+          console.log("finished");
+          let schedules = getBookings.response.filter(({student_email}) => !!student_email);
+          let getStaffNames = new XMLHttpRequest();
+          getStaffNames.open('GET', '/api/staff_members');
+          getStaffNames.responseType = 'json';
+          getStaffNames.send();
+          getStaffNames.addEventListener('load', event => {
+            let nameMap = getStaffNames.response;
+            console.log(schedules);
+            schedules = schedules.map(schedule => {
+              return {
+                name: nameMap.find(({id})=> id === schedule.staff_id).name,
+                date: schedule.date,
+                email: schedule.student_email,
+                time: schedule.time,
+              };
+            });
+            buildListOfSchedules(schedules);
+
+            console.log(schedules);
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Bookings</h1>
+    <ul id='bookings'></ul>
+  </body>
+</html>

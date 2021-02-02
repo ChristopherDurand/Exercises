@@ -1,0 +1,51 @@
+html {
+  font-size: 16px;
+}
+body {
+  background: #8f8;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+form {
+  background: white;
+  padding: 1rem;
+}
+h1 {
+  margin: 3rem 0 1rem 1rem;
+  font-size: 3rem;
+}
+
+form dt {
+  margin: 1rem 0 0.25rem 0;
+}
+
+form input { 
+  width: 15rem;
+  margin: 2px;
+  padding: 0.5rem;
+  display: inline-block;
+}
+form div {
+  display: inline-block;
+  margin-left: 5rem;
+}
+
+form button {
+  margin: 1rem 0 1rem 0rem;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  background: #8f8;
+  box-sizing: border-box;
+}
+
+form button:hover {
+  background: #6c6;
+  margin: .85rem 0 0.85rem -.15rem;
+  border: solid black 0.15rem;
+}

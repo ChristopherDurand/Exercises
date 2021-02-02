@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Node Swap</title>
+    <script type="text/javascript">
+      function invalidSwap(node1, node2) {
+        return (!node1 || !node2) || node1.contains(node2) || node2.contains(node1);
+      }
+      function nodeSwap(a, b) {
+        let node1 = document.getElementById(String(a));
+        let node2 = document.getElementById(String(b));
+        if (invalidSwap(node1, node2)) {
+          return undefined;
+        }
+        let tempNode = document.createElement('div');
+        node1.parentNode.insertBefore(tempNode, node1);
+        node2.parentNode.insertBefore(node1, node2);
+        tempNode.parentNode.insertBefore(node2, tempNode);
+        tempNode.remove();
+      }
+
+    </script>
+  </head>
+  <body>
+    <div id="1">
+      <div id="4"></div>
+      <div id="5">
+        <div id="6"></div>
+      </div>
+    </div>
+    <div id="2"></div>
+    <div id="3">
+      <div id="7"></div>
+      <div id="8"></div>
+      <div id="9"></div>
+    </div>
+  </body>
+</html>

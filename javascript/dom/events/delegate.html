@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Event Delegation Function</title>
+    <script>
+      let element1, element2, element3, callback, delegateEvent;
+      document.addEventListener('DOMContentLoaded', () => {
+        element1 = document.querySelector('table');
+        element2 = document.querySelector('main h1');
+        element3 = document.querySelector('main');
+        callback = ({target, currentTarget}) => {
+        alert(`Target: ${target.tagName}\nCurrent Target: ${currentTarget.tagName}`);
+        };
+        delegateEvent = (element, selector, eventType, callback) => {
+          if (element === null || !(element instanceof Element)) {
+            return undefined;
+          }
+          element.addEventListener(eventType, event => {
+            let allowedElements = element.querySelectorAll(selector);
+            for (let index = 0; index < allowedElements.length; index++) {
+              if (event.target === allowedElements[index]) {
+                callback(event);
+              }
+            }
+          });
+
+          return true;
+        };
+      });
+    </script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h1>Header</h1>
+        <p>Content</p>
+      </section>
+      <aside>
+        <h2>Sub Side Notes</h2>
+        <p>Note 1</p>
+        <p>Note 2</p>
+      </aside>
+    </main>
+    <nav>
+      <p>Side Note</p>
+    </nav>
+  </body>
+</html>

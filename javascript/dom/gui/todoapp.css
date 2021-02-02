@@ -1,0 +1,101 @@
+body {
+  background: #66bb66;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1rem;
+  padding-top: 1rem;
+}
+
+ul#todos {
+  padding: 0 0 1rem 2rem;
+  max-width: 600px;
+}
+
+#todos li {
+  background: white;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+#todos li a {
+  float: right;
+}
+#todos li a img {
+  display: inline-block;
+  margin-top: -0.125rem;
+  height: 1.5rem;
+  box-sizing: border-box;
+}
+#todos li a img:hover {
+  border: 2px solid red;
+}
+#overlay {
+  background-color: rgba(0,0,0,0.3);
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+}
+
+#confirm {
+  display: none;
+  position: absolute;
+  background: white;
+  font-size: 1.25rem;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+#confirm p {
+  align-content: right;
+  color: white;
+  float: right;
+  margin-top: 0.5rem;
+}
+#confirm a {
+  display: inline-block;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin-left: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
+#confirm a.yes {
+  background: green;
+}
+#confirm a.no {
+  background: red;
+}
+
+
+#context {
+  position: absolute;
+  display: none;
+  width: 150px;
+}
+
+#context li {
+  display: inline-block;
+  width: 150px;
+}
+
+#context a {
+  padding: 0.5rem;
+  color: white;
+  display: block;
+  background: #777;
+  border: 1px solid #ccc;
+  text-decoration: none;
+}
+#context a:hover {
+  background: #999;
+}
