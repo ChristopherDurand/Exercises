@@ -1,0 +1,11 @@
+#Does my List Include This?
+
+def include?(list, value)
+  list.any? { |element| element == value }
+end
+
+puts include?([1,2,3,4,5], 3) == true
+puts include?([1,2,3,4,5], 6) == false
+puts include?([], 3) == false
+puts include?([nil], nil) == true
+puts include?([], nil) == false
