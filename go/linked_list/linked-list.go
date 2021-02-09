@@ -10,7 +10,7 @@ type LinkedList struct {
 	first *node
 }
 
-func NewLinkedList(a int) *LinkedList {
+func NewLinkedList(a w int) *LinkedList {
 	return &LinkedList{&node{data: a, next: nil}}
 }
 
