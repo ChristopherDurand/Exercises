@@ -135,7 +135,7 @@ func main() {
 	Alice.depthFirstDo(func(val string) {
 		fmt.Println(val)
 	})
-	fmt.Print("\n\n\n\n")
+	fmt.Print("\n\n")
 	Alice.breadthFirstDo(func(val string) {
 		fmt.Println(val)
 	})

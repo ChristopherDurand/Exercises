@@ -81,5 +81,4 @@ func main() {
 	fmt.Println(queue.dequeue())
 	fmt.Println(queue.dequeue())
 	fmt.Println(queue.dequeue())
-
 }
